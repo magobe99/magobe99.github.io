@@ -1,0 +1,18 @@
+{
+    "usuarios": [
+      {
+        "id": 1,
+        "nombre": "admin",
+        "correo": "admin@correo.com",
+        "contraseña": "admin123",
+        "rol": "administrador"
+      },
+      {
+        "id": 2,
+        "nombre": "usuario",
+        "correo": "usuario@correo.com",
+        "contraseña": "usuario123",
+        "rol": "visualizador"
+      }
+    ]
+  }

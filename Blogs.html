@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="icon" type="image/jpeg" href="GlamUp.jpg">
+    <title>Contactanos - GlamUp</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="Blogs.css">
+</head>
+<body>
+  <div id="mensajeLogin" style="display: none; position: fixed; top: 0; left: 0; 
+  width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.7); 
+  color: white; display: none; justify-content: center; align-items: center; 
+  font-size: 24px; z-index: 9999;">
+Por favor, inicie sesión para continuar.
+</div>
+
+<!-- Encabezado -->
+<!-- Encabezado -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light w-100" style="position: fixed; z-index: 1000;">
+  <div class="container-fluid">
+    <!-- Logo -->
+    <a class="navbar-brand me-3" href="index.html">
+      <img src="GlamUp.jpg" alt="GlamUp Logo" height="40">
+    </a>
+
+    <!-- Barra de búsqueda -->
+    <input class="form-control rounded-pill w-25 me-auto" type="search" placeholder="Buscar..." aria-label="Buscar">
+
+    <!-- Botón opciones + contáctanos en móvil -->
+    <div class="d-flex d-lg-none align-items-center gap-2">
+      <button class="navbar-toggler" type="button" id="toggleOpciones" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a href="Contactanos.html" class="btn btn-outline-pink">
+        <i class="bi bi-telephone-fill"></i> Contáctanos
+      </a>
+    </div>
+
+    <!-- Menú de opciones -->
+    <div class="collapse navbar-collapse" id="navbarOpciones">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-3 text-center align-items-center">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Productos.html">Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Blogs.html">Blog</a>
+        </li>
+
+        <li class="nav-item">
+
+        <!-- Botón para abrir el modal -->
+<button id="openAuthModal" class="nav-link">Iniciar Sesión</button>
+
+
+<!-- Modal -->
+<div class="auth-modal" id="authModal">
+<div class="auth-content">
+  <span class="auth-close" id="closeAuthModal">&times;</span>
+
+<!-- Formulario Iniciar Sesión -->
+<div class="auth-card show" id="loginForm">
+<h2>Inicia Sesión</h2>
+<p>Ingrese su correo y contraseña</p>
+
+<form id="form-login">
+  <input type="email" id="correo" placeholder="Correo Electrónico" required />
+
+  <div class="password-container">
+    <input type="password" id="contraseña" placeholder="Contraseña" required />
+    <span class="toggle-password" onclick="togglePasswordVisibility('contraseña', 'eyeIcon1')">
+      <svg id="eyeIcon1" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#888" viewBox="0 0 24 24">
+        <path d="..." />
+      </svg>
+    </span>
+  </div>
+
+  <button type="submit" class="auth-btn">Iniciar Sesión</button>
+</form>
+
+<!-- Aquí va el mensaje -->
+<p id="mensaje" style="color: red; margin-top: 10px;"></p>
+
+<p class="extra-text">¿No tienes una cuenta? <a href="#" id="goToRegister">Regístrate aquí</a></p>
+</div>
+
+  
+
+
+
+<!-- Formulario de Registro -->
+<!-- Formulario de Registro -->
+<div class="auth-card" id="registerForm" style="display: none;">
+<h2>Crea tu Cuenta</h2>
+
+<form id="form-register">
+  <input type="text" id="nombre" placeholder="Nombre" required />
+  <input type="email" id="correo-register" placeholder="Correo Electrónico" required />
+
+  <div class="password-container">
+    <input type="password" id="contraseña-register" placeholder="Contraseña" required />
+    <span class="toggle-password" onclick="togglePasswordVisibility('contraseña-register', 'registerEyeIcon')">
+      <svg id="registerEyeIcon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#888" viewBox="0 0 24 24">
+        <path d="M12 5c-7.633 0-11 6.999-11 6.999s3.38 7.001 11 7.001 11-6.999 11-6.999-3.38-7.001-11-7.001zm0 12c-2.761 0-5-2.239-5-5 
+          0-2.761 2.239-5 5-5 2.761 0 5 2.239 5 5 
+          0 2.761-2.239 5-5 5zm0-8c-1.657 0-3 1.343-3 3 
+          0 1.657 1.343 3 3 3 1.657 0 3-1.343 3-3 
+          0-1.657-1.343-3-3-3z"/>
+      </svg>
+    </span>
+  </div>
+
+  <!-- Confirmación de la contraseña -->
+  <div class="password-container">
+    <input type="password" id="confirmar-contraseña" placeholder="Confirma tu Contraseña" required />
+    <span class="toggle-password" onclick="togglePasswordVisibility('confirmar-contraseña', 'registerEyeIcon2')">
+      <svg id="registerEyeIcon2" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#888" viewBox="0 0 24 24">
+        <path d="M12 5c-7.633 0-11 6.999-11 6.999s3.38 7.001 11 7.001 11-6.999 11-6.999-3.38-7.001-11-7.001zm0 12c-2.761 0-5-2.239-5-5 
+          0-2.761 2.239-5 5-5 2.761 0 5 2.239 5 5 
+          0 2.761-2.239 5-5 5zm0-8c-1.657 0-3 1.343-3 3 
+          0 1.657 1.343 3 3 3 1.657 0 3-1.343 3-3 
+          0-1.657-1.343-3-3-3z"/>
+      </svg>
+    </span>
+  </div>
+
+  <button type="submit" id="register-btn" class="auth-btn">Crear Cuenta</button>
+</form>
+
+<p id="mensaje-registro" style="color: red;"></p> <!-- Mensaje de registro -->
+
+<p class="extra-text">¿Ya tienes una cuenta? <a href="#" id="goToLogin">Inicia sesión aquí</a></p>
+</div>
+
+
+
+
+</div>
+</div>
+
+        </li>
+
+        <!-- Contáctanos en escritorio -->
+        <li class="nav-item d-none d-lg-block">
+          <a href="Contactanos.html" class="btn btn-outline-pink ms-3">
+            <i class="bi bi-telephone-fill"></i> Contáctanos
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Carrusel -->
+
+
+
+<div id="jumbotronCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active jumbotron-slide" style="background-image: url('https://img.freepik.com/fotos-premium/varios-cosmeticos-decorativos-hermoso-fondo-enfoque-selectivo_73944-57227.jpg?w=826');">
+      <div class="jumbotron-content">
+        <h1>Descubre los secretos del contouring</h1>
+        <p>Aprende cómo definir tu rostro como una profesional con estos simples trucos.</p>
+        <a href="Blog.html" class="btn btn-white">Leer más</a>
+      </div>
+    </div>
+    <div class="carousel-item jumbotron-slide" style="background-image: url('https://img.freepik.com/fotos-premium/varios-cosmeticos-decorativos-hermoso-fondo-enfoque-selectivo_73944-57227.jpg?w=826');">
+      <div class="jumbotron-content">
+        <h1>Rutina de cuidado facial nocturno</h1>
+        <p>Cuida tu piel antes de dormir con esta guía completa.</p>
+        <a href="Blog.html" class="btn btn-white">Leer más</a>
+      </div>
+    </div>
+    <div class="carousel-item jumbotron-slide" style="background-image: url('https://img.freepik.com/fotos-premium/varios-cosmeticos-decorativos-hermoso-fondo-enfoque-selectivo_73944-57227.jpg?w=826');">
+      <div class="jumbotron-content">
+        <h1>Maquillaje natural para todos los días</h1>
+        <p>Logra un look fresco y sencillo en menos de 10 minutos.</p>
+        <a href="Blog.html" class="btn btn-white">Leer más</a>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#jumbotronCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#jumbotronCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
+
+<div class="container">
+  <div class="row text-center align-items-center">
+     <!-- Este botón es para agregar productos (visible solo para admin) -->
+     <button class="btn btn-outline-light boton_compraAqui" id="btnAgregarProducto" style="display: none; margin-top: 25px;">Nueva publicación</button>
+
+     <!-- Este botón es para agregar publicaciones (visible solo para admin) -->
+     <button class="btn btn-outline-light boton_compraAqui" id="btnAgregarPublicacion" style="display: none;margin: 10px">Editar publicación</button>
+ 
+  </div>
+</div>
+   
+
+<!-- Cards -->
+<div class="container my-5">
+  <div class="row text-center">
+    <div class="col-md-4 post-card">
+      <a href="blog.html">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_917370-MLU69819810543_062023-O.webp">
+        <h5 class="mt-3">5 tonos de labial que debes probar este año</h5>
+        <small>Publicado el 2 de abril de 2025</small>
+        <p class="mt-2">Conoce los colores que están marcando tendencia en el mundo del maquillaje.</p>
+      </a>
+    </div>
+    <div class="col-md-4 post-card">
+      <a href="blog.html">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_917370-MLU69819810543_062023-O.webp">
+        <h5 class="mt-3">Tips para una piel radiante en verano</h5>
+        <small>Publicado el 30 de marzo de 2025</small>
+        <p class="mt-2">Evita la resequedad y luce una piel hidratada y luminosa.</p>
+      </a>
+    </div>
+    <div class="col-md-4 post-card">
+      <a href="blog.html">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_917370-MLU69819810543_062023-O.webp">
+        <h5 class="mt-3">Errores comunes al aplicar base</h5>
+        <small>Publicado el 28 de marzo de 2025</small>
+        <p class="mt-2">Evita estos errores y mejora el acabado de tu maquillaje.</p>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Últimos Posts -->
+<div  class="container mb-5">
+  <div class="row">
+    <div class="col-md-8">
+      <h3 class="mb-4">Últimos Posts</h3>
+
+      <a href="blog.html" class="text-decoration-none text-dark">
+        <div class="post-horizontal">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_917370-MLU69819810543_062023-O.webp">
+          <div class="info">
+            <h5>Maquillaje de noche para ocasiones especiales</h5>
+            <small>Publicado el 27 de marzo de 2025</small>
+            <p>Brilla en tu próxima fiesta con este maquillaje impactante y duradero.</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="blog.html" class="text-decoration-none text-dark">
+        <div class="post-horizontal">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_917370-MLU69819810543_062023-O.webp">
+          <div class="info">
+            <h5>Cómo delinear tus ojos correctamente</h5>
+            <small>Publicado el 25 de marzo de 2025</small>
+            <p>Domina el arte del delineado con estas técnicas fáciles.</p>
+          </div>
+        </div>
+      </a>
+
+      <div class="d-none" id="morePosts">
+        <a href="blog.html" class="text-decoration-none text-dark">
+          <div class="post-horizontal">
+            <img src="https://http2.mlstatic.com/D_NQ_NP_917370-MLU69819810543_062023-O.webp">
+            <div class="info">
+              <h5>Peinados rápidos para la rutina diaria</h5>
+              <small>Publicado el 22 de marzo de 2025</small>
+              <p>Ideas simples y estilosas para peinarte sin perder tiempo.</p>
+            </div>
+          </div>
+        </a>
+        <a href="blog.html" class="text-decoration-none text-dark">
+          <div class="post-horizontal">
+            <img src="https://http2.mlstatic.com/D_NQ_NP_917370-MLU69819810543_062023-O.webp">
+            <div class="info">
+              <h5>Productos de maquillaje veganos</h5>
+              <small>Publicado el 21 de marzo de 2025</small>
+              <p>Explora marcas conscientes y amigables con el medio ambiente.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <button class="btn btn-outline-dark mt-3" onclick="mostrarMasPosts()">Leer más posts</button>
+    </div>
+
+    <!-- Publicaciones en tendencia -->
+    <div style="background-color: white;" class="col-md-4">
+      <h4 class="mb-4">Publicaciones en Tendencia</h4>
+      <a href="blog.html" class="text-decoration-none text-dark">
+        <div class="post-horizontal">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_917370-MLU69819810543_062023-O.webp">
+          <div class="info">
+            <h6>Guía de brochas para principiantes</h6>
+            <small>23 de marzo de 2025</small>
+            <p>Aprende a usar cada tipo de brocha correctamente.</p>
+          </div>
+        </div>
+      </a>
+      <a href="blog.html" class="text-decoration-none text-dark">
+        <div class="post-horizontal">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_917370-MLU69819810543_062023-O.webp">
+          <div class="info">
+            <h6>Top 5 máscaras de pestañas 2025</h6>
+            <small>20 de marzo de 2025</small>
+            <p>Reseñas y recomendaciones de productos líderes.</p>
+          </div>
+        </div>
+      </a>
+      <a href="blog.html" class="text-decoration-none text-dark">
+        <div class="post-horizontal">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_917370-MLU69819810543_062023-O.webp">
+          <div class="info">
+            <h6>Maquillaje a prueba de agua</h6>
+            <small>18 de marzo de 2025</small>
+            <p>Perfecto para verano, playas y climas húmedos.</p>
+          </div>
+        </div>
+      </a>
+      <a href="blog.html" class="text-decoration-none text-dark">
+        <div class="post-horizontal">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_917370-MLU69819810543_062023-O.webp">
+          <div class="info">
+            <h6>Trucos de maquillaje con hielo</h6>
+            <small>15 de marzo de 2025</small>
+            <p>Técnicas frías que revitalizan tu piel.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Sección final -->
+<div class="container mb-5">
+  <h3 class="mb-4">Lo más nuevo en Belleza y Estilo de Vida</h3>
+  <div class="row">
+    <div class="col-md-3">
+      <a href="blog.html">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_917370-MLU69819810543_062023-O.webp" class="img-fluid rounded">
+        <div class="mt-2">
+          <div class="category-post">Maquillaje</div>
+          <h6>Maquillaje para pieles maduras</h6>
+          <p>Consejos para resaltar la belleza sin marcar líneas de expresión.</p>
+          <small>10 de marzo de 2025</small>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a href="blog.html">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_917370-MLU69819810543_062023-O.webp" class="img-fluid rounded">
+        <div class="mt-2">
+          <div class="category-post">Estilo de vida</div>
+          <h6>Organiza tu tocador con estilo</h6>
+          <p>Ideas de almacenamiento funcionales y estéticas.</p>
+          <small>8 de marzo de 2025</small>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a href="blog.html">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_917370-MLU69819810543_062023-O.webp" class="img-fluid rounded">
+        <div class="mt-2">
+          <div class="category-post">Bienestar</div>
+          <h6>Rutinas de skincare antiestrés</h6>
+          <p>Relájate mientras cuidas tu piel.</p>
+          <small>6 de marzo de 2025</small>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a href="blog.html">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_917370-MLU69819810543_062023-O.webp" class="img-fluid rounded">
+        <div class="mt-2">
+          <div class="category-post">Cuidado de salud</div>
+          <h6>Alimentos que favorecen tu piel</h6>
+          <p>Una piel bonita también se construye desde adentro.</p>
+          <small>3 de marzo de 2025</small>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+ 
+ <!-- Footer -->
+ <footer class="footer">
+  <div class="container-xl">
+    <div class="row">
+      <div class="col-12">
+        <div class="footer-top text-center mb-4">
+          <div class="payment-icons d-flex flex-wrap justify-content-center gap-3">
+            <img src="https://b2ctrendy.vtexassets.com/arquivos/visa.svg" alt="Visa">
+            <img src="https://b2ctrendy.vtexassets.com/arquivos/american.svg" alt="AmericanExpress">
+            <img src="https://b2ctrendy.vtexassets.com/arquivos/master.svg" alt="MasterCard">
+            <img src="https://b2ctrendy.vtexassets.com/arquivos/diners.svg" alt="Diners Club">
+            <img src="https://b2ctrendy.vtexassets.com/arquivos/pse.svg" alt="PSE">
+            <img src="https://b2ctrendy.vtexassets.com/assets/vtex.file-manager-graphql/images/1065193e-f3ab-49ff-9001-dd3f6f17771f___3f062f9c28ed88e323a5cbdd12c284f7.png" alt="Mercado Pago">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row footer-content">
+      <div class="col-12 col-md-6 col-lg-3 text-center text-lg-start">
+        <img style="height: 100px;" src="GlamUP.jpg" alt="GLAMUP Logo" class="mb-3">
+
+        <div class="social-icons d-flex justify-content-center justify-content-lg-start gap-3">
+          <img src="https://b2ctrendy.vtexassets.com/assets/vtex.file-manager-graphql/images/c735637b-3800-4322-b2ec-796825e6c649___a1bd1f038dfba9ff94234686f12ab2b3.png" alt="Facebook">
+          <img src="https://b2ctrendy.vtexassets.com/assets/vtex.file-manager-graphql/images/23954486-bc3a-42d8-9673-fd2eb3b43a0c___39c2e821e828c7c316280e9d20b15206.png" alt="TikTok">
+          <img src="https://b2ctrendy.vtexassets.com/assets/vtex.file-manager-graphql/images/cbad1829-1e75-478a-bf60-7ecbf0a9fdc9___c10698b516c0ab65c35c310f667e946f.png" alt="Instagram">
+          <img src="https://b2ctrendy.vtexassets.com/assets/vtex.file-manager-graphql/images/d1c250cf-bedd-48cf-9566-f0e60061b910___bec081d71f568e2dd1b1910902d33bbe.png" alt="Pinterest">
+          <img src="https://b2ctrendy.vtexassets.com/assets/vtex.file-manager-graphql/images/ae8baa13-2758-4eff-a4e5-6476b0e5d978___64fcd9606e21e5aba2b893b7ab9657b8.png" alt="YouTube">
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3">
+        <h4>Información</h4>
+        <ul  class="list-unstyled ">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="Productos.html">Productos</a></li>
+          <li><a href="Blogs.html">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3">
+        <h4>Enlaces de interés</h4>
+        <ul class="list-unstyled">
+          <li><a href="index.html#somos">Quiénes somos</a></li>
+          <li><a href="Pf.html">Preguntas frecuentes</a></li>
+          <li><a href="Contactanos.html">Contáctanos</a></li>
+        </ul>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3">
+        <h4>Atención al cliente</h4>
+        <p>Horario:</p>
+        <p>Lunes a viernes de 7:30 a.m. a 5:00 p.m.</p>
+        <p>Sábados de 8:00 a.m. a 12:30 p.m.</p>
+        <p>No tenemos atención los días festivos</p>
+        <p>Escríbenos: <a href="mailto:magobe99@hotmail.com">magobe99@hotmail.com</a></p>
+        <p>WhatsApp: <a href="https://wa.me/573223728410">+57 3223728410</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom text-center py-3 mt-4">
+    <p>Colombia © GlamUp 2025. Derechos reservados. Desarrollado por Marlon y Mariana</p>
+  </div>
+
+  <div class="whatsapp-icon position-fixed" style="bottom: 20px; right: 20px;">
+    <a href="https://wa.me/573223728410">
+      <img src="Whatsapp.png" alt="WhatsApp" style="width: 50px;">
+    </a>
+  </div>
+</footer>
+    
+      
+<!-- Bootstrap JavaScript y Popper.js -->
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="funciones.js"></script>
+
+</body>
+</html>

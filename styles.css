@@ -1,0 +1,804 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #fff0f5;
+    margin: 0;
+    padding: 2rem;
+  }
+
+  h1 {
+    text-align: center;
+    color: #d63384;
+    margin-bottom: 2rem;
+  }
+
+  a{
+    color: #333;
+    text-decoration: none;
+  }
+
+nav {
+    position: fixed; /* Fija el nav en la pantalla */
+    top: 0; /* Lo mantiene en la parte superior */
+    left: 0;
+    width: 100%; /* Ocupa todo el ancho */
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    z-index: 1000; /* Se mantiene sobre otros elementos */
+}
+
+.dropdown-menu {
+    z-index: 2000 !important; /* Mayor al z-index del nav */
+    position: absolute !important;
+    display: block !important; /* Solo para probar si se está desplegando */
+  }
+
+.navbar {
+    background-color: #ffccdd;
+    
+}
+
+@media (min-width: 768px) {
+    /* Mostrar elementos en pantallas medianas o más */
+  }
+
+.btn-outline-pink {
+    border: 2px solid #ff3385;
+    color: #ff3385;
+    border-radius: 20px;
+    padding: 5px 15px;
+    background: transparent;
+    font-weight: bold;
+  }
+  
+  .btn-outline-pink:hover {
+    background: #ff3385;
+    color: white;
+  }
+
+.navbar-nav .nav-link {
+    color: #333;
+    font-weight: bold;
+    padding: 0 15px;
+    border-right: 1px solid #fff;
+    
+}
+
+.navbar-nav .nav-link:last-child {
+    border-right: none;
+    
+}
+
+.navbar-brand img {
+    border-radius: 10px;
+}
+
+input[type="search"] {
+    border: 2px solid #ff99bb;
+    padding: 8px;
+}
+
+.btn {
+    background-color: #ff66a3;
+    color: white;
+}
+
+.btn:hover {
+    background-color: #e65c99;
+}
+
+header {
+    background-color: #ffccdd;
+    padding: 50px 0;
+    border-radius: 15px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #ff3385;
+}
+
+section h2 {
+    color: #ff3385;
+    margin-bottom: 20px;
+}
+
+.carousel img {
+    border-radius: 10px;
+    border: 2px solid #ff99bb;
+}
+
+.container .row .col-md-3 img {
+    border-radius: 10px;
+    border: 2px solid #ff99bb;
+    margin-bottom: 10px;
+}
+
+footer {
+    background-color: #ffccdd;
+    padding: 15px 0;
+}
+
+.banner-bg {
+    background-image: url('Banner.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 65vh; /* ✅ asegura una altura decente pero adaptable */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .banner-cat1 {
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    width: 100vw;
+    height: 300px;
+    background-image: url('maquillaje.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+  }
+
+  .banner-cat2 {
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    width: 100vw;
+    height: 300px;
+    background-image: url('piel.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+  }
+  .banner-cat3 {
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    width: 100vw;
+    height: 300px;
+    background-image: url('brochas.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+  }
+  .banner-cat4 {
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    width: 100vw;
+    height: 300px;
+    background-image: url('aceesorios.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+  }
+  .banner-cat5 {
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    width: 100vw;
+    height: 300px;
+    background-image: url('capilar.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+  }
+  
+  .border-dashed { --bs-border-style: dashed; }
+  
+
+.jumbotron-so {
+    background-image: url('Somos.jpg');
+    background-size: cover;  /* Ajusta la imagen al contenedor */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* No repetir la imagen */
+    padding: 100px 0; /* Añadir espacio vertical */
+    color: white; /* Texto en blanco si la imagen es oscura */
+}
+
+
+
+.titulo {
+
+   color: #D6909B;
+   font-family: Arial, sans-serif;
+  font-size: 45px;
+  font-weight: 700;
+  margin: 0;
+
+}
+
+.subtitulo {
+
+    color: #7E5E63;
+    font-family: Arial, sans-serif;
+   font-size: 25px;
+   font-weight: 600;
+   margin: 0;
+ 
+ }
+
+.boton_compraAqui{
+    border-radius: 10px;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+}
+ 
+
+#carouselProductos {
+    position: relative;
+}
+
+/*Carrusel Index*/
+#carouselProductos {
+    position: relative;
+}
+
+/* Controles de los botones */
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute; /* Posicionamos fuera del carrusel */
+    top: 50%; /* Centrado vertical */
+    transform: translateY(-50%); /* Ajustamos el centro exacto */
+    background-color: transparent; /* Fondo transparente */
+    border: none; /* Sin bordes */
+    color: black; /* Color de la flecha */
+    width: 40px; /* Ancho del botón */
+    height: 40px; /* Alto del botón */
+}
+
+/* Flecha de la izquierda */
+.carousel-control-prev {
+    left: -50px; /* Posicionamos el botón hacia fuera a la izquierda */
+}
+
+/* Flecha de la derecha */
+.carousel-control-next {
+    right: -50px; /* Posicionamos el botón hacia fuera a la derecha */
+}
+
+/* Flechas de los botones */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: black; /* Flecha negra */
+    border-radius: 50%; /* Hace la flecha circular */
+}
+
+/* Cambiar el color de los iconos cuando se pasa el mouse */
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+    background-color: #555; /* Color oscuro cuando el mouse pasa sobre ellos */
+}
+
+.footer {
+    background-color: #fff;
+    color: black;
+    font-family: Arial, sans-serif;
+    padding: 20px 50px;
+}
+
+.footer-top {
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.payment-icons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.payment-icons img {
+    width: 50px;
+}
+
+.footer {
+    background-color: #fff;
+    color: black;
+    font-family: Arial, sans-serif;
+    padding: 20px 50px;
+}
+
+.footer-top {
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.payment-icons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.payment-icons img {
+    width: 50px;
+}
+
+/* Contenido del footer */
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px 0;
+    align-items: flex-start;
+}
+
+/* Secciones individuales del footer */
+.footer-section {
+    width: 22%;
+    padding: 0 10px;  /* Reduje un poco el padding */
+}
+
+/* ✅ Logo más pequeño */
+.footer-section.brand img {
+    width: 120px;
+    margin-bottom: 5px;
+}
+
+/* Redes sociales en horizontal */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.social-icons img {
+    width: 25px; /* Íconos un poco más pequeños */
+    transition: transform 0.3s ease-in-out;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1);
+}
+
+/* Títulos de cada sección */
+.footer-section h4 {
+    font-size: 15px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+/* ✅ Cambiar color de enlaces */
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 3px;
+}
+
+.footer-section ul li a {
+    text-decoration: none;
+    color: #333; /* Cambié el color de los links */
+    font-size: 14px;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+
+/* ✅ Reducir separación entre líneas de información */
+.footer-section p {
+    font-size: 14px;
+    margin-bottom: 3px; /* Menos espacio entre líneas */
+    line-height: 1.4;
+}
+
+/* Línea inferior del footer */
+.footer-bottom {
+    text-align: center;
+    font-size: 13px;
+    border-top: 1px solid #ccc;
+    padding-top: 8px;
+}
+
+/* WhatsApp flotante */
+.whatsapp-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.whatsapp-icon img {
+    width: 50px;
+}
+
+/* ✅ Responsividad */
+@media (max-width: 992px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-section {
+        width: 100%;
+        padding: 5px 0;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+}
+
+
+/* Separador entre secciones */
+.divider {
+    width: 1px;
+    background-color: #ccc;
+    height: auto;
+    margin: 0 15px;
+}
+
+/* Ajuste para el contenedor del footer */
+.footer-content > .divider {
+    height: 100%;
+}
+
+.whatsapp-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.whatsapp-icon img {
+    width: 50px;
+}
+
+.text-pink {
+    color: #ff3385;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    color: black;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.carousel-control-prev {
+    left: -40px;
+}
+
+.carousel-control-next {
+    right: -40px;
+}
+
+.card {
+    border: none;
+    text-align: center;
+    background-color: #fff5f8;
+}
+
+.card img {
+    border-radius: 10px;
+}
+
+.btn-agregar {
+    border: 2px solid #ff3385;
+    color: #ff3385;
+    border-radius: 20px;
+    padding: 5px 15px;
+    background: transparent;
+}
+
+.btn-agregar:hover {
+    background: #ff3385;
+    color: white;
+}
+
+.controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin: 0 auto 1rem auto;
+    max-width: 1000px;
+    padding-right: 1rem;
+  }
+
+  .nav-btn {
+    background-color: #d63384;
+    color: white;
+    border: none;
+    padding: 0.01rem 0.7rem;
+    border-radius: 100%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: background 0.3s;
+  }
+
+  .nav-btn:hover {
+    background-color: #c2185b;
+  }
+
+  .carousel-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    padding: 1rem;
+  }
+
+  .carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .product {
+    flex: 0 0 25%;
+    box-sizing: border-box;
+    padding: 1rem;
+    text-align: center;
+ 
+  }
+
+  .product img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  .product h3 {
+    margin: 0.5rem 0 0.2rem;
+    color: #444;
+  }
+
+  .product p {
+    margin: 0;
+    color: #d63384;
+    font-weight: bold;
+  }
+
+  @media (max-width: 768px) {
+    .product {
+      flex: 0 0 50%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .product {
+      flex: 0 0 100%;
+    }
+  }
+
+  
+
+/* Solo scrollbar vertical */
+::-webkit-scrollbar {
+    width: 10px; /* Solo afecta la barra vertical */
+  }
+  
+  /* Fondo de la barra (track) */
+  ::-webkit-scrollbar-track {
+    background: #ffe4f0; /* Rosa clarito */
+  }
+  
+  /* Parte móvil (thumb) */
+  ::-webkit-scrollbar-thumb {
+    background: #ff69b4; /* Rosa fuerte */
+    border-radius: 6px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #e754a8; /* Rosa más oscuro al pasar el mouse */
+  }
+  body {
+    overflow-x: hidden;
+  }
+
+  
+  /* Estilos Inicio y Registro*/
+
+  /* Estilo general del modal */
+.auth-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Cuando el modal está activo */
+  .auth-modal.active {
+    display: flex;
+  }
+  
+  /* Contenido del modal */
+  .auth-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 400px;
+    width: 90%;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  }
+  
+  /* Botón para cerrar */
+  .auth-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+  }
+  
+  /* Cada formulario (login o register) */
+  .auth-card {
+    opacity: 0;
+    display: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  .auth-card.show {
+    display: block;
+    opacity: 1;
+  }
+  
+  /* Títulos */
+  .auth-card h2 {
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 10px;
+  }
+  
+  /* Textos debajo del título */
+  .auth-card p {
+    font-size: 14px;
+    color: #000;
+    margin-bottom: 15px;
+  }
+  
+  /* Inputs */
+  .auth-card input[type="email"],
+  .auth-card input[type="password"],
+  .auth-card input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+  }
+  
+  /* Botones */
+  .auth-btn {
+    background-color: #ff69b4;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .auth-btn:hover {
+    background-color: #8a8787;
+  }
+  
+  /* Enlaces debajo de los botones */
+  .auth-card a {
+    color: #ff69b4;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .auth-card a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Checkbox estilo */
+  .auth-card label {
+    font-size: 13px;
+    color: #000;
+  }
+
+  .extra-text {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #000;
+  }
+  .password-container {
+    position: relative;
+    width: 100%;
+  }
+  
+  .password-container input {
+    width: 100%;
+    padding-right: 40px; /* espacio para el icono */
+  }
+  
+  
+/* ojito */
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-container input {
+  width: 100%;
+  padding-right: 40px; /* espacio para el ojito */
+  box-sizing: border-box;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+
+
+
+
+
+

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="icon" type="image/jpeg" href="GlamUp.jpg">
+    <title>Contactanos - GlamUp</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="Blogs.css">
+  
+</head>
+
+<body>
+<!-- Mensaje de iniciar sesión bloqueando toda la pantalla -->
+<div id="mensajeLogin" style="display: none; position: fixed; top: 0; left: 0; 
+    width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.8); 
+    color: white; display: flex; justify-content: center; align-items: center; 
+    font-size: 24px; z-index: 9999;">
+  Por favor, inicie sesión para acceder a esta página.
+</div>
+
+
+<script src="funciones.js"></script> <!-- Tu archivo de funciones -->
+
+<!-- Encabezado -->
+<!-- Encabezado -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light w-100" style="position: fixed; z-index: 1000;">
+  <div class="container-fluid">
+    <!-- Logo -->
+    <a class="navbar-brand me-3" href="index.html">
+      <img src="GlamUp.jpg" alt="GlamUp Logo" height="40">
+    </a>
+
+    <!-- Barra de búsqueda -->
+    <input class="form-control rounded-pill w-25 me-auto" type="search" placeholder="Buscar..." aria-label="Buscar">
+
+    <!-- Botón opciones + contáctanos en móvil -->
+    <div class="d-flex d-lg-none align-items-center gap-2">
+      <button class="navbar-toggler" type="button" id="toggleOpciones" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a href="Contactanos.html" class="btn btn-outline-pink">
+        <i class="bi bi-telephone-fill"></i> Contáctanos
+      </a>
+    </div>
+
+    <!-- Menú de opciones -->
+    <div class="collapse navbar-collapse" id="navbarOpciones">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-3 text-center align-items-center">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Productos.html">Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Blogs.html">Blog</a>
+        </li>
+
+        <li class="nav-item">
+
+        <!-- Botón para abrir el modal -->
+<button id="openAuthModal" class="nav-link">Iniciar Sesión</button>
+
+
+<!-- Modal -->
+<div class="auth-modal" id="authModal">
+<div class="auth-content">
+  <span class="auth-close" id="closeAuthModal">&times;</span>
+
+<!-- Formulario Iniciar Sesión -->
+<div class="auth-card show" id="loginForm">
+<h2>Inicia Sesión</h2>
+<p>Ingrese su correo y contraseña</p>
+
+<form id="form-login">
+  <input type="email" id="correo" placeholder="Correo Electrónico" required />
+
+  <div class="password-container">
+    <input type="password" id="contraseña" placeholder="Contraseña" required />
+    <span class="toggle-password" onclick="togglePasswordVisibility('contraseña', 'eyeIcon1')">
+      <svg id="eyeIcon1" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#888" viewBox="0 0 24 24">
+        <path d="..." />
+      </svg>
+    </span>
+  </div>
+
+  <button type="submit" class="auth-btn">Iniciar Sesión</button>
+</form>
+
+<!-- Aquí va el mensaje -->
+<p id="mensaje" style="color: red; margin-top: 10px;"></p>
+
+<p class="extra-text">¿No tienes una cuenta? <a href="#" id="goToRegister">Regístrate aquí</a></p>
+</div>
+
+  
+
+
+
+<!-- Formulario de Registro -->
+<!-- Formulario de Registro -->
+<div class="auth-card" id="registerForm" style="display: none;">
+<h2>Crea tu Cuenta</h2>
+
+<form id="form-register">
+  <input type="text" id="nombre" placeholder="Nombre" required />
+  <input type="email" id="correo-register" placeholder="Correo Electrónico" required />
+
+  <div class="password-container">
+    <input type="password" id="contraseña-register" placeholder="Contraseña" required />
+    <span class="toggle-password" onclick="togglePasswordVisibility('contraseña-register', 'registerEyeIcon')">
+      <svg id="registerEyeIcon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#888" viewBox="0 0 24 24">
+        <path d="M12 5c-7.633 0-11 6.999-11 6.999s3.38 7.001 11 7.001 11-6.999 11-6.999-3.38-7.001-11-7.001zm0 12c-2.761 0-5-2.239-5-5 
+          0-2.761 2.239-5 5-5 2.761 0 5 2.239 5 5 
+          0 2.761-2.239 5-5 5zm0-8c-1.657 0-3 1.343-3 3 
+          0 1.657 1.343 3 3 3 1.657 0 3-1.343 3-3 
+          0-1.657-1.343-3-3-3z"/>
+      </svg>
+    </span>
+  </div>
+
+  <!-- Confirmación de la contraseña -->
+  <div class="password-container">
+    <input type="password" id="confirmar-contraseña" placeholder="Confirma tu Contraseña" required />
+    <span class="toggle-password" onclick="togglePasswordVisibility('confirmar-contraseña', 'registerEyeIcon2')">
+      <svg id="registerEyeIcon2" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#888" viewBox="0 0 24 24">
+        <path d="M12 5c-7.633 0-11 6.999-11 6.999s3.38 7.001 11 7.001 11-6.999 11-6.999-3.38-7.001-11-7.001zm0 12c-2.761 0-5-2.239-5-5 
+          0-2.761 2.239-5 5-5 2.761 0 5 2.239 5 5 
+          0 2.761-2.239 5-5 5zm0-8c-1.657 0-3 1.343-3 3 
+          0 1.657 1.343 3 3 3 1.657 0 3-1.343 3-3 
+          0-1.657-1.343-3-3-3z"/>
+      </svg>
+    </span>
+  </div>
+
+  <button type="submit" id="register-btn" class="auth-btn">Crear Cuenta</button>
+</form>
+
+<p id="mensaje-registro" style="color: red;"></p> <!-- Mensaje de registro -->
+
+<p class="extra-text">¿Ya tienes una cuenta? <a href="#" id="goToLogin">Inicia sesión aquí</a></p>
+</div>
+
+
+
+
+</div>
+</div>
+
+        </li>
+
+        <!-- Contáctanos en escritorio -->
+        <li class="nav-item d-none d-lg-block">
+          <a href="Contactanos.html" class="btn btn-outline-pink ms-3">
+            <i class="bi bi-telephone-fill"></i> Contáctanos
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-2 toc">
+        <h5>Tabla de contenido</h5>
+        <a href="#p1">1. Proyecta confianza y bienestar.</a>
+        <a href="#p2">2. Pequeños hábitos que hacen la diferencia</a>
+        <a href="#p3">3. Dale a tu piel el equilibrio que necesita</a>
+        <a href="#p4">4. La piel cuidada es sinónimo de amor propio</a>
+        <a href="#p5">5. Un recurso práctico para empezar</a>
+        <a href="#p6">6. El skincare como un acto de amor propio</a>
+      </div>
+
+      <div class="col-md-6">
+        <h1>5 Razones por las que Todo el mundo debería cuidar su piel (Incluyéndote a ti, Amiga)</h1>
+        <small class="text-muted">Publicado el 05 de abril de 2025</small>
+        <img src="https://img.freepik.com/vector-gratis/miniatura-youtube-belleza-dibujada-mano_23-2148919637.jpg?t=st=1744077181~exp=1744080781~hmac=42097c9761954341c9fe726fbe0a452d44fa86d04949924703d43ad3f533688e&w=1380" class="img-fluid my-3" alt="Cuidado de la piel">
+
+        <p>Sabemos que la vida puede ser un caos: el trabajo, la universidad, las salidas con amigas... y ni que hablar de esos días en los que solo quieres tirarte en la cama a ver series. Pero, amiga, si hay algo que de verdad merece un poquito de atención cada día es tu piel. Esa que te acompaña a todas partes y refleja cómo te sientes por dentro y por fuera. Este blog no es para decirte qué hacer, sino para inspirarte y recordarte que el cuidado de la piel es también una forma de autocuidado y amor propio.</p>
+
+        <p>Conectar contigo a través de una rutina diaria puede parecer pequeño, pero tiene un impacto poderoso en tu bienestar. Una piel cuidada no se logra con milagros ni con productos carísimos, sino con consistencia, cariño y buenos hábitos. Acompáñanos en este recorrido donde te contamos por qué el cuidado de tu piel es una inversión en ti misma ✨.</p>
+
+        <h3 id="p1">1. Tu piel es lo primero que ven los demás</h3>
+        <p>Tu piel es tu carta de presentación. No se trata de tener una piel "perfecta", sino de tener una piel saludable, con brillo natural y libre de impurezas. Una piel bien cuidada te da seguridad para enfrentar el mundo, para salir sin maquillaje si lo deseas, para sonreír con confianza y sentirte tú misma.</p>
+
+        <p>Cuando te miras al espejo y ves una piel luminosa, automáticamente mejora tu estado de ánimo. Es como un recordatorio de que estás haciendo algo por ti. Además, cuando proyectas bienestar exterior, las personas a tu alrededor también lo perciben. Cuidar tu piel es una forma de mostrarle al mundo que te respetas y te valoras.</p>
+
+        <h3 id="p2">2. Te ayuda a verte más joven por más tiempo</h3>
+        <p>La hidratación diaria, el uso de protector solar y una rutina adecuada pueden ayudarte a prevenir el envejecimiento prematuro. ¿Quién no quiere conservar ese glow juvenil el mayor tiempo posible? Cuida tu piel hoy y tu yo del futuro te lo agradecerá.</p>
+
+        <p>No se trata de detener el tiempo, sino de acompañar con dignidad y gracia cada etapa de tu vida. Las arrugas cuentan historias, pero eso no significa que no podamos mantener la piel firme, radiante y saludable. Empezar temprano con hábitos simples es la clave para una piel feliz por muchos años.</p>
+
+        <h3 id="p3">3. Evitas problemas con granitos, irritaciones y resequedad</h3>
+        <p>Muchas veces, los brotes o irritaciones son el resultado de descuidos: dormir con maquillaje, no limpiar bien la piel o usar productos muy agresivos. Crear una rutina que se adapte a tu tipo de piel puede hacer una gran diferencia. Unos minutos al día pueden ahorrarte muchas molestias después.</p>
+
+        <p>Cuidar tu piel de forma constante también te permite conocerla mejor. Sabes qué ingredientes te funcionan, cuándo estás más propensa a granitos o cómo prevenir la resequedad en climas extremos. Ese conocimiento te da el poder de actuar antes de que surjan los problemas.</p>
+
+        <h3 id="p4">4. Te hace sentir más segura y hermosa</h3>
+        <p>Cuidarte, mirarte al espejo y ver que te estás dedicando tiempo es un acto de autoestima. No es superficialidad, es conexión contigo. Es parte de quererte, de aceptarte y de sentirte cómoda en tu propia piel. ¡Y eso se nota!</p>
+
+        <p>El skincare no es solo cuestión de imagen, sino de actitud. Al dedicarte esos minutos diarios, estás enviando un mensaje poderoso: "soy prioridad". Y cuando te tratas con amor, el mundo también empieza a tratarte así. Esa seguridad que nace del cuidado se refleja en cada paso que das.</p>
+
+        <h3 id="p5">5. Aprender a cuidar tu piel nunca ha sido tan fácil</h3>
+        <p>Gracias a tantas fuentes de información, blogs , videos y productos accesibles, hoy más que nunca puedes aprender a entender tu piel. No necesitas una rutina de 10 pasos ni productos costosos. Lo importante es la constancia y elegir lo que funciona para ti.</p>
+
+        <p>Además, puedes disfrutar el proceso: probar texturas nuevas, descubrir fragancias suaves o ver cómo tu piel mejora con el tiempo. Cada pequeño cambio positivo es un logro, y ver los resultados te motiva a seguir cuidándote. La educación en skincare está al alcance de todas y puede ser divertida.</p>
+
+        <div class="ratio ratio-16x9 my-3">
+          <iframe src="https://www.youtube.com/embed/Ca902HtbX6Q" title="YouTube video" allowfullscreen></iframe>
+        </div>
+
+        <h3 id="p6">6. El skincare como un acto de amor propio</h3>
+        <p>No es solo un paso más en tu día. Es un momento de conexión contigo misma. Mientras te aplicas una crema o haces un masaje facial, también estás reafirmando que mereces cuidado, atención y ternura. Que te estás priorizando en medio del caos diario. Y eso, amiga, ¡vale oro!</p>
+
+        <p>Crear ese ritual diario se convierte en una forma de meditación, una pausa consciente. Te ayuda a respirar, a desconectar del estrés, y a reconectar contigo. En un mundo que nos exige tanto, mimarte un poco cada día es una forma de resistencia y empoderamiento.</p>
+
+        <h4 class="mt-5">Reflexión final</h4>
+        <p>La piel es nuestro órgano más grande y una de las primeras formas en que interactuamos con el mundo. Cuidarla no es vanidad, es respeto, cariño y autoconsciencia. Así que la próxima vez que sientas que no tienes tiempo para ti, recuerda que incluso cinco minutos de cuidado facial pueden cambiar tu energía y ayudarte a reconectar contigo. 💕</p>
+
+        <p>No lo hagas por las tendencias ni por las redes sociales. Hazlo por ti, por ese momento íntimo que construyes con cada gota de sérum, con cada caricia de crema. Mereces sentirte bien en tu piel, porque ella es tu hogar más cercano.</p>
+      </div>
+
+      <div class="col-md-4">
+        <h4>Posts más populares</h4>
+        <div class="d-flex mb-3">
+          <img src="https://source.unsplash.com/80x80/?skincare" class="me-2" alt="Popular">
+          <div>
+            <h6>Rutina de noche para piel grasa</h6>
+            <small class="text-muted">04 abril 2025</small>
+            <p class="mb-0">Consejos rápidos para controlar el brillo sin resecar tu piel.</p>
+          </div>
+        </div>
+        <div class="d-flex mb-3">
+          <img src="https://source.unsplash.com/80x80/?beauty" class="me-2" alt="Popular">
+          <div>
+            <h6>5 mascarillas caseras que amamos</h6>
+            <small class="text-muted">02 abril 2025</small>
+            <p class="mb-0">Fáciles, económicas y con resultados increíbles.</p>
+          </div>
+        </div>
+        <div class="d-flex mb-3">
+          <img src="https://source.unsplash.com/80x80/?natural" class="me-2" alt="Popular">
+          <div>
+            <h6>Maquillaje natural en 10 minutos</h6>
+            <small class="text-muted">01 abril 2025</small>
+            <p class="mb-0">Perfecto para la oficina o una salida casual.</p>
+          </div>
+        </div>
+        <div class="d-flex mb-3">
+          <img src="https://source.unsplash.com/80x80/?spa" class="me-2" alt="Popular">
+          <div>
+            <h6>Spa casero: tips para relajarte</h6>
+            <small class="text-muted">30 marzo 2025</small>
+            <p class="mb-0">Crea una experiencia spa sin salir de casa.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <h4>Más posts</h4>
+      <div class="col-md-4">
+        <a href="Blog.html"><img src="https://http2.mlstatic.com/D_NQ_NP_917370-MLU69819810543_062023-O.webp" class="img-fluid" alt=""></a>
+        <small class="text-muted">03 abril 2025</small>
+        <a href="Blog.html"><h5>¿Por qué deberías usar bloqueador solar incluso en casa?</h5></a>
+        <p>Descubre cómo los rayos UV afectan tu piel incluso frente al computador.</p>
+      </div>
+      <div class="col-md-4">
+        <a href="Blog.html"><img src="https://http2.mlstatic.com/D_NQ_NP_917370-MLU69819810543_062023-O.webp" class="img-fluid" alt=""></a>
+        <small class="text-muted">28 marzo 2025</small>
+        <a href="Blog.html"><h5>Cómo armar una rutina de cuidado minimalista</h5></a>
+        <p>Menos es más: la guía definitiva para un skincare sencillo y efectivo.</p>
+      </div>
+      <div class="col-md-4">
+        <a href="Blog.html"><img src="https://http2.mlstatic.com/D_NQ_NP_917370-MLU69819810543_062023-O.webp" class="img-fluid" alt=""></a>
+        <small class="text-muted">25 marzo 2025</small>
+        <a href="Blog.html"><h5>Errores comunes que sabotean tu rutina facial</h5></a>
+        <p>Evita estos hábitos que pueden estar perjudicando tu piel sin saberlo.</p>
+      </div>
+    </div>
+
+    <div class="mt-5">
+      <h4>Comentarios</h4>
+      <div class="review">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_917370-MLU69819810543_062023-O.webp" alt="Usuario">
+        <div>
+          <strong>Laura Pérez</strong><br>
+          <small>Reseñado el 03 de abril de 2025</small>
+          <div class="star-rating">
+            <span>★★★★★</span>
+          </div>
+          <p>¡Este blog me motivó un montón! A veces siento que no tengo tiempo para mí, pero después de leerlo me di cuenta que unos minutos para cuidar mi piel hacen una gran diferencia. Gracias por recordarnos lo valiosas que somos ♥️.</p>
+          <p>Además, me encantó que no se trata solo de la estética, sino de algo mucho más profundo: sentirnos bien con nosotras mismas. Ahora entiendo que el skincare puede ser un ritual de autocuidado que me conecta conmigo misma cada día.</p>
+        </div>
+      </div>
+
+      <div class="review">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_917370-MLU69819810543_062023-O.webp" alt="Usuario">
+        <div>
+          <strong>Mariana Ríos</strong><br>
+          <small>Reseñado el 02 de abril de 2025</small>
+          <div class="star-rating">
+            <span>★★★★☆</span>
+          </div>
+          <p>Me encantó cómo abordaron el cuidado de la piel desde el amor propio. Yo pensaba que era solo vanidad, pero ahora veo que es mucho más. ¡Y el video fue el toque perfecto!</p>
+          <p>Me gustaría que en el futuro profundicen más sobre rutinas para pieles sensibles. Aun así, todo el artículo está súper completo y tiene un tono muy cercano y real. ¡Sigan así!</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+   <!-- Footer -->
+   <footer class="footer">
+    <div class="container-xl">
+      <div class="row">
+        <div class="col-12">
+          <div class="footer-top text-center mb-4">
+            <div class="payment-icons d-flex flex-wrap justify-content-center gap-3">
+              <img src="https://b2ctrendy.vtexassets.com/arquivos/visa.svg" alt="Visa">
+              <img src="https://b2ctrendy.vtexassets.com/arquivos/american.svg" alt="AmericanExpress">
+              <img src="https://b2ctrendy.vtexassets.com/arquivos/master.svg" alt="MasterCard">
+              <img src="https://b2ctrendy.vtexassets.com/arquivos/diners.svg" alt="Diners Club">
+              <img src="https://b2ctrendy.vtexassets.com/arquivos/pse.svg" alt="PSE">
+              <img src="https://b2ctrendy.vtexassets.com/assets/vtex.file-manager-graphql/images/1065193e-f3ab-49ff-9001-dd3f6f17771f___3f062f9c28ed88e323a5cbdd12c284f7.png" alt="Mercado Pago">
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="row footer-content">
+        <div class="col-12 col-md-6 col-lg-3 text-center text-lg-start">
+          <img style="height: 100px;" src="GlamUP.jpg" alt="GLAMUP Logo" class="mb-3">
+  
+          <div class="social-icons d-flex justify-content-center justify-content-lg-start gap-3">
+            <img src="https://b2ctrendy.vtexassets.com/assets/vtex.file-manager-graphql/images/c735637b-3800-4322-b2ec-796825e6c649___a1bd1f038dfba9ff94234686f12ab2b3.png" alt="Facebook">
+            <img src="https://b2ctrendy.vtexassets.com/assets/vtex.file-manager-graphql/images/23954486-bc3a-42d8-9673-fd2eb3b43a0c___39c2e821e828c7c316280e9d20b15206.png" alt="TikTok">
+            <img src="https://b2ctrendy.vtexassets.com/assets/vtex.file-manager-graphql/images/cbad1829-1e75-478a-bf60-7ecbf0a9fdc9___c10698b516c0ab65c35c310f667e946f.png" alt="Instagram">
+            <img src="https://b2ctrendy.vtexassets.com/assets/vtex.file-manager-graphql/images/d1c250cf-bedd-48cf-9566-f0e60061b910___bec081d71f568e2dd1b1910902d33bbe.png" alt="Pinterest">
+            <img src="https://b2ctrendy.vtexassets.com/assets/vtex.file-manager-graphql/images/ae8baa13-2758-4eff-a4e5-6476b0e5d978___64fcd9606e21e5aba2b893b7ab9657b8.png" alt="YouTube">
+          </div>
+        </div>
+  
+        <div class="col-12 col-md-6 col-lg-3">
+          <h4>Información</h4>
+          <ul  class="list-unstyled ">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="Productos.html">Productos</a></li>
+            <li><a href="Blogs.html">Blog</a></li>
+          </ul>
+        </div>
+  
+        <div class="col-12 col-md-6 col-lg-3">
+          <h4>Enlaces de interés</h4>
+          <ul class="list-unstyled">
+            <li><a href="index.html#somos">Quiénes somos</a></li>
+            <li><a href="Pf.html">Preguntas frecuentes</a></li>
+            <li><a href="Contactanos.html">Contáctanos</a></li>
+          </ul>
+        </div>
+  
+        <div class="col-12 col-md-6 col-lg-3">
+          <h4>Atención al cliente</h4>
+          <p>Horario:</p>
+          <p>Lunes a viernes de 7:30 a.m. a 5:00 p.m.</p>
+          <p>Sábados de 8:00 a.m. a 12:30 p.m.</p>
+          <p>No tenemos atención los días festivos</p>
+          <p>Escríbenos: <a href="mailto:magobe99@hotmail.com">magobe99@hotmail.com</a></p>
+          <p>WhatsApp: <a href="https://wa.me/573223728410">+57 3223728410</a></p>
+        </div>
+      </div>
+    </div>
+  
+    <div class="footer-bottom text-center py-3 mt-4">
+      <p>Colombia © GlamUp 2025. Derechos reservados. Desarrollado por Marlon y Mariana</p>
+    </div>
+  
+    <div class="whatsapp-icon position-fixed" style="bottom: 20px; right: 20px;">
+      <a href="https://wa.me/573223728410">
+        <img src="Whatsapp.png" alt="WhatsApp" style="width: 50px;">
+      </a>
+    </div>
+  </footer>
+      
+        
+  <!-- Bootstrap JavaScript y Popper.js -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="funciones.js"></script>
+  <script src="acceso.js"></script>
+  
+  
+
+</body>
+</html>
+
+
